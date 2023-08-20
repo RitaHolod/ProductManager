@@ -1,14 +1,15 @@
 import domain.Product;
+
 public class Repo {
     private Product[] products = new Product[0];
 
-    public Product[] findAll(){
+    public Product[] findAll() {
         return products;
     }
 
-    public void save(Product product){
+    public void save(Product product) {
         Product[] tmp = new Product[products.length + 1];
-        for (int i; i<products.length; i++) {
+        for (int i = 0; i < products.length; i++) {
             tmp[i] = products[i];
         }
 
@@ -16,7 +17,7 @@ public class Repo {
         products = tmp;
     }
 
-    public void deleteById(int id){
+    public void deleteById(int id) {
 
         Product[] tmp = new Product[products.length - 1];
 

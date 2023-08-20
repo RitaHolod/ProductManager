@@ -1,8 +1,9 @@
 package domain;
-public class Book extends Product{
+
+public class Book extends Product {
     private String author;
 
-    public Book(int id, double price, String name, String author){
+    public Book(int id, double price, String name, String author) {
         super(id, price, name);
     }
 
