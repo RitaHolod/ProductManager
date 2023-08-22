@@ -34,4 +34,12 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
+
+    public boolean matches(String search){
+        if (getName().contains(search)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
