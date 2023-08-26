@@ -1,4 +1,5 @@
 import domain.Book;
+import domain.NotFoundException;
 import domain.Product;
 import domain.Smartphone;
 import org.junit.jupiter.api.Assertions;
@@ -32,4 +33,8 @@ public class RepoTest {
     }
 
 
+    @Test
+    public void shouldGenerateOwnException(){
+        Assertions.assertThrows(NotFoundException.class, () -> {repository.deleteById(34);});
+    }
 }

@@ -1,3 +1,4 @@
+import domain.NotFoundException;
 import domain.Product;
 
 public class Repo {
@@ -19,8 +20,12 @@ public class Repo {
 
     public void deleteById(int id) {
 
-        Product[] tmp = new Product[products.length - 1];
+        if (findById(id) == null){
+            throw new NotFoundException(
+                    "Product with id:" + id + "not found");
+        }
 
+        Product[] tmp = new Product[products.length - 1];
         int index = 0;
         for (Product product : products) {
             if (product.getId() != id) {
@@ -30,6 +35,15 @@ public class Repo {
         }
 
         products = tmp;
+    }
+
+    public Product findById(int id){
+        for (Product product: products) {
+            if (product.getId() == id){
+                return product;
+            }
+        }
+        return null;
     }
 
 }
