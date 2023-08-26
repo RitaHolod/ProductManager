@@ -1,3 +1,4 @@
+import domain.AlreadyExistsException;
 import domain.NotFoundException;
 import domain.Product;
 
@@ -9,6 +10,15 @@ public class Repo {
     }
 
     public void save(Product product) {
+
+        for (Product item: products) {
+            if (item.getId() == product.getId()){
+                throw new AlreadyExistsException("Element with id:" +product.getId()+ "already exists");
+            }
+
+        }
+
+
         Product[] tmp = new Product[products.length + 1];
         for (int i = 0; i < products.length; i++) {
             tmp[i] = products[i];

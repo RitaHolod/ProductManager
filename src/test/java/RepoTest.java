@@ -1,7 +1,4 @@
-import domain.Book;
-import domain.NotFoundException;
-import domain.Product;
-import domain.Smartphone;
+import domain.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +8,8 @@ public class RepoTest {
     Book book1 = new Book(1,200,"Harry Potter","Rouling");
     Book book2 = new Book(21,400,"Katalina","Moem");
     Book book3 = new Book(3,300,"War and Peace","Tolstoy");
+
+    Book book4 = new Book(1,240,"Book", "Author");
 
     Smartphone smartphone4 = new Smartphone(4,340,"S43","Huawei");
 
@@ -36,5 +35,10 @@ public class RepoTest {
     @Test
     public void shouldGenerateOwnException(){
         Assertions.assertThrows(NotFoundException.class, () -> {repository.deleteById(34);});
+    }
+
+    @Test
+    public void shouldGenerateExceptionWhenIdSames(){
+        Assertions.assertThrows(AlreadyExistsException.class, () -> {repository.save(book4);});
     }
 }
